@@ -59,6 +59,7 @@ var addToArray = function(text) {
 var refreshList = function() {
 	uList.innerHTML = "";
 	var listItem;
+	var cBoxCheck;
 	for (var i = 0; i<todoList.length; i++) {
 		listItem = document.createElement('li');
 		listItem.innerHTML = todoList[i];
@@ -69,13 +70,11 @@ var refreshList = function() {
 		listItemCheckbox.className = 'cBox';
 		uList.appendChild(listItem);
 		listItem.appendChild(listItemCheckbox);
-		/*
-this.cBoxCheck() = function () {
-			listItemCheckbox.addEventListener('click', function() {
+		this.cBoxCheck = function () {
+			document.getElementsByClassName('cBox').addEventListener('click', function() {
 				alert('123');
 			});
 		}
-*/
 	}
 }
 
@@ -98,5 +97,5 @@ var cBoxChecker = function () {
 */
 
 testButton.addEventListener('click', function(e) {
-	alert(cBoxCheck());
+	alert(refreshList.cBoxCheck());
 });
