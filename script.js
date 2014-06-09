@@ -50,14 +50,15 @@ var deleteItem = function() {
 };
 */
 
-var addToArray = function() {
+var addToArray = function(todoText) {
 	var id;
 	for (var i=0; i<todoList.length; i++) {
 		id = i;
+		console.log(id);
 	}
 	var todoObject = {
 		id: id,
-		value: inputField.value
+		value: todoText
 	}
 	todoList.push(todoObject);
 	console.log(todoList);
@@ -77,11 +78,10 @@ var refreshList = function() {
 	var listItem;
 	for (var i = 0; i<todoList.length; i++) {
 		listItem = document.createElement('li');
-		listItem.innerHTML = todoList[i];
+		listItem.innerHTML = todoList[i].value;
 		listItem.id = 'item' + i;
 		listItemCheckbox;
 		listItemCheckbox.type = 'checkbox';
-		listItemCheckbox.name = 'cBox' + i;
 		listItemCheckbox.id = 'cBox' + i;
 		uList.appendChild(listItem);
 		listItem.appendChild(listItemCheckbox);
@@ -95,6 +95,7 @@ var refreshList = function() {
 addButton.addEventListener('click', function(e){
 	var todoText = inputField.value;
 	addTodo(todoText);
+	console.log(todoText);
 });
 
 
@@ -108,6 +109,8 @@ var cBoxChecker = function () {
 };
 */
 
+/*
 testButton.addEventListener('click', function(e) {
 	alert(cBoxCheck());
 });
+*/
