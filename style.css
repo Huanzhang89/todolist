@@ -1,0 +1,38 @@
+ul {
+	list-style-type: none;
+	padding: 0 0 0 0;
+	font-family: helvetica, sans-serif;
+	color: gray;
+}
+
+/*
+button.btn {
+	margin:0;
+}
+*/
+
+li {
+	background-color:#cac5c5
+}
+
+input {
+	color: purple;
+	font-style: italic;
+	font-family: helvetica, sans-serif;
+}
+
+input.checkbox {
+	padding: 0 0 0 90px;
+	margin: 3px 0 0 90px;
+	float: right;
+}
+
+div#page-wrap {
+	width:245px;
+}
+
+div#TodoTable-wrapper {
+	display: block;
+	height: 300px;
+	width: inherit;
+}

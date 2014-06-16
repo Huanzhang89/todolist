@@ -61,18 +61,18 @@ var addToArray = function(todoText) {
 		value: todoText
 	}
 	todoList.push(todoObject);
-	console.log(todoList.length);
 }
+
 
 /*
-var deleteListItem = function(checkboxId) {
+var deleteListItem = function() {
 	
 }
-
-var cBoxCheck = function (checkboxId) {
-	document.getElementById(checkboxId).addEventListener('click', deleteListItem());
-}
 */
+inputField.addEventListener('click', function() {
+	inputField.value = "";
+});
+
 
 var refreshList = function() {
 	uList.innerHTML = "";
@@ -83,24 +83,32 @@ var refreshList = function() {
 		listItem.id = i;
 		var listItemCheckbox = document.createElement('input');
 		listItemCheckbox.type = 'checkbox';
+		listItemCheckbox.className = 'checkbox';
 		listItemCheckbox.id = 'cBox' + i;
 		uList.appendChild(listItem);
 		listItem.appendChild(listItemCheckbox);
-		//cBoxCheck('cBox' + i);
+		this.checkboxId = function(){
+			return listItemCheckbox.id;
+		};
 		listItemCheckbox.addEventListener('click', function(){
-			todoList.splice(document.getElementById(listItemCheckbox.id).parentNode.id,1);
-			refreshList();
-		})
+		todoList.splice(document.getElementById(listItemCheckbox.id).parentNode.id,1);
+		refreshList();
+		});
+		
 		
 	};
 }
 
-
+/*
+testButton.addEventListener('click', function(a, b){
+		console.log(document.getElementById(checkboxId()));
+		
+});
+*/
 
 addButton.addEventListener('click', function(e){
 	var todoText = inputField.value;
 	addTodo(todoText);
-	console.log(todoText);
 });
 
 
