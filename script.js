@@ -8,7 +8,18 @@ var todoObject = function (id, value) {
 	this.id = id;
 	this.value = value;
 };
+var listItemCheckboxArray = [];
+
 var todoListUid = [];
+
+function callbackOnKeyDown (e) {
+	console.log(e);
+	if (e.keyCode == 13) {
+		var todoText = inputField.value;
+		addTodo(todoText);
+		inputField.value = "";
+	}
+};
 
 
 
@@ -26,7 +37,7 @@ var addToArray = function(todoText) {
 		var todoObject1 = new todoObject (1, todoText);
 		todoList.push(todoObject1);
 		todoListUid = [todoObject1.id];
-		console.log(todoObject1.id);
+		//console.log(todoObject1.id);
 	} else {
 		var todoListLength = todoList.length + 1;
 		//for loop or if statement to create new todoObject and push it to the array
@@ -48,8 +59,14 @@ inputField.addEventListener('click', function() {
 	inputField.value = "";
 });
 */
+
+
 var deleteItem = function (listItemId) {
-	todoList.splice(document.getElementById(listItemId).parentNode.id,1);
+	console.log(listItemId);
+    todoList.splice(listItemId,1);
+    console.log(todoList);
+    refreshList();
+
 };
 
 var refreshList = function() {
@@ -59,15 +76,20 @@ var refreshList = function() {
 		listItem = document.createElement('li');
 		listItem.innerHTML = todoList[i].value;
 		listItem.id = i;
+
 		var listItemCheckbox = document.createElement('input');
 		listItemCheckbox.type = 'checkbox';
 		listItemCheckbox.className = 'checkbox';
 		listItemCheckbox.id = 'cBox' + i;
+
+
 		uList.appendChild(listItem);
 		listItem.appendChild(listItemCheckbox);
 		listItemCheckbox.addEventListener('click', function(){
-		deleteItem(listItemCheckbox.id);
-		refreshList();
+	        console.log(listItem.id);
+	        console.log(typeof listItem.id);
+			deleteItem((parseInt(listItem.id)));
+			
 		});
 		
 		
@@ -81,6 +103,9 @@ var insertPositionArrows = function () {
 	}
 }
 
+todoText.onkeydown = function(e) {
+	callbackOnKeyDown(e);
+};
 addButton.addEventListener('click', function(e){
 	var todoText = inputField.value;
 	addTodo(todoText);
