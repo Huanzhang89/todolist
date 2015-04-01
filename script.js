@@ -13,11 +13,9 @@ var listItemCheckboxArray = [];
 var todoListUid = [];
 
 function callbackOnKeyDown (e) {
-	console.log(e);
+	// console.log(e);
 	if (e.keyCode == 13) {
-		var todoText = inputField.value;
-		addTodo(todoText);
-		inputField.value = "";
+		addNewTodo();
 	}
 };
 
@@ -94,6 +92,9 @@ var refreshList = function() {
 		
 		
 	};
+
+	localStorage.setItem('todoArray', JSON.stringify(todoList));
+	console.log(JSON.parse(localStorage.getItem('todoArray')));
 };
 
 var insertPositionArrows = function () {
@@ -106,8 +107,16 @@ var insertPositionArrows = function () {
 todoText.onkeydown = function(e) {
 	callbackOnKeyDown(e);
 };
-addButton.addEventListener('click', function(e){
+addButton.addEventListener('click', function(){
+	addNewTodo();
+});
+
+var addNewTodo = function() {
 	var todoText = inputField.value;
 	addTodo(todoText);
 	inputField.value = "";
-});
+}
+
+var storage = window.localStorage;
+
+storage = todoList;

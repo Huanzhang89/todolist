@@ -13,7 +13,7 @@ button.btn {
 
 li {
 	/* overflow:hidden; */
-	background-color:#cac5c5;
+	/*background-color:#cac5c5;*/
 	word-wrap: break-word;
 	/* text-overflow: ellipsis; */
 }
@@ -22,10 +22,39 @@ input {
 	color: purple;
 	font-style: italic;
 	font-family: helvetica, sans-serif;
+	padding-left: 5px;
 }
 
 #todoText {
 	width:400px;
+	border:2px solid darkgrey;
+	height: 16px;
+}
+
+#TodoTable {
+	border: 2px solid darkgrey;
+	min-height: 50px;
+	max-height: auto;
+	background:#DFE3F0;
+	padding: 5px 0 5px 0;
+}
+
+#TodoTable > li {
+	border-bottom: 1px dashed darkgrey;
+	padding: 0 5px 0 5px;
+	font-family: Helvetica sans-serif;
+	letter-spacing: 1px;
+	color: #7F88A3;
+}
+
+
+.btn {
+	border: 2px solid darkgrey;
+	background: #DFE3F0;
+	position:relative;
+	right: -5px;
+	color: rgb(102, 88, 108);
+	font-weight: bold;
 }
 
 input.checkbox {
@@ -44,6 +73,6 @@ div#page-wrap {
 
 div#TodoTable-wrapper {
 	display: block;
-	height: 300px;
+	height: auto;
 	width: inherit;
 }
