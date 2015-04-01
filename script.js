@@ -1,5 +1,5 @@
 var inputField = document.getElementById('todoText');
-var todoList = [];
+var todoList = JSON.parse(localStorage.getItem('todoArray')) || [];
 var uList = document.getElementById('TodoTable');
 var addButton = document.getElementById('addTodo');
 var uListChild = document.getElementById('TodoTable').childNodes;
@@ -117,6 +117,7 @@ var addNewTodo = function() {
 	inputField.value = "";
 }
 
-var storage = window.localStorage;
+if (todoList[0] !== 'undefined') {
+	refreshList();
+}
 
-storage = todoList;

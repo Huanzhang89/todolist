@@ -1,4 +1,4 @@
-todolist
+Todolist
 ========
 
-Javascript todoList
+Vanilla Javascript todoList
