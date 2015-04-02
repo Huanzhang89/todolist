@@ -1,5 +1,5 @@
 var inputField = document.getElementById('todoText');
-var todoList = JSON.parse(localStorage.getItem('todoArray')) || [];
+var todoList = [];
 var uList = document.getElementById('TodoTable');
 var addButton = document.getElementById('addTodo');
 var uListChild = document.getElementById('TodoTable').childNodes;
@@ -11,6 +11,16 @@ var todoObject = function (id, value) {
 var listItemCheckboxArray = [];
 
 var todoListUid = [];
+
+var init = function() {
+	todoList = JSON.parse(localStorage.getItem('todoArray'));
+	refreshList();
+
+};
+
+window.onload = function() {
+	init();
+};
 
 function callbackOnKeyDown (e) {
 	// console.log(e);
@@ -83,12 +93,8 @@ var refreshList = function() {
 
 		uList.appendChild(listItem);
 		listItem.appendChild(listItemCheckbox);
-		listItemCheckbox.addEventListener('click', function(){
-	        console.log(listItem.id);
-	        console.log(typeof listItem.id);
-			deleteItem((parseInt(listItem.id)));
-			
-		});
+		addDeleteEvent(listItemCheckbox, listItem);
+		
 		
 		
 	};
@@ -96,6 +102,15 @@ var refreshList = function() {
 	localStorage.setItem('todoArray', JSON.stringify(todoList));
 	console.log(JSON.parse(localStorage.getItem('todoArray')));
 };
+
+var addDeleteEvent = function(listItemCheckbox, listItem) {
+	listItemCheckbox.addEventListener('click', function(){
+	        console.log(listItem.id);
+	        console.log(typeof listItem.id);
+			deleteItem((parseInt(listItem.id)));
+			
+		});
+}
 
 var insertPositionArrows = function () {
 	//loops through the array and add arrows
@@ -117,7 +132,5 @@ var addNewTodo = function() {
 	inputField.value = "";
 }
 
-if (todoList[0] !== 'undefined') {
-	refreshList();
-}
+
 
